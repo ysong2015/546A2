@@ -1,21 +1,21 @@
 {
-  "name": "cs-546-boilerplate",
+  "name": "to-do-list",
   "version": "1.0.0",
-  "description": "A boilerplate to use in CS-546 assignments; will be updated",
+  "description": "A simple to-do list application for a web programming course",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Stevens-CS546/Boilerplate.git"
+    "url": "git+https://github.com/ysong2015/546A2.git"
   },
-  "author": "Phil Barresi",
+  "author": "Yumeng Song",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Stevens-CS546/Boilerplate/issues"
+    "url": "https://github.com/ysong2015/546A2/issues"
   },
-  "homepage": "https://github.com/Stevens-CS546/Boilerplate#readme",
+  "homepage": "https://github.com/ysong2015/546A2#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
     "ejs": "^2.4.1",
