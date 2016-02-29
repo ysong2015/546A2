@@ -1,0 +1,70 @@
+<% if (!locals.taskToUpdate) { 
+    method = "POST"; 
+    action = "/api/todo"; 
+    editing = false;
+    taskToUpdate = null;
+} else { 
+	method= "PUT"; 
+    action= "/api/todo/" + taskToUpdate.id; 
+    editing = true; 
+} 
+%>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <h3><%= editing ? "Edit Task" : "Create Task"; %></h3>
+            <hr />
+            <form action="<%=action%>" method="POST" class="form-horizontal">
+          
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="author">Author</label>
+                    <div class="col-sm-9"> 
+                        <% if (!taskToUpdate) { %>
+                        <input type="text" name="author" class="form-control" id="author" placeholder="Author" />
+                        <% } else { %>     
+                        <label><%- taskToUpdate.author %></label>
+                        <% } %>               
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="title">Title</label>
+                    <div class="col-sm-9">
+                        <% if (taskToUpdate) { %>
+                        <input type="text" name="taskTitle" class="form-control" id="title" value="<%- taskToUpdate.taskTitle %>" placeholder="Task Title" />
+                        <% } else { %>
+                           <input type="text" name="taskTitle" class="form-control" id="title" placeholder="Task Title" />
+                        <% } %>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="description">Description</label>
+                    <div class="col-sm-9">
+                        <textarea name="taskDescription" class="form-control" id="description" placeholder="An optional area for more task info"><%- taskToUpdate ? taskToUpdate.taskDescription : "" %></textarea>
+                    </div>
+                </div>
+                
+                <% if (taskToUpdate) { %>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="status">Status</label>
+                    <div class="col-sm-9">                        
+                        <select name="status">
+                            <option value="open">Open</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <% } %>
+                
+                
+                <% if(method !== "POST") { %>
+                    <input type="hidden" name="_method" value="<%=method%>" />
+                <% } %>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>

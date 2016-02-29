@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <div class="container">
+            <main>
+                <h2><%= task.taskTitle %></h2>
+                <hr/>
+                <form class="form-horizontal" method="DELETE" action="/api/todo/<%=task.id%>">
+                <button class="btn btn-default" type="submit">Delete</button>
+                </form>
+                <label>Author: </label>
+                <%= task.author %><br>
+                <label>Status: </label>
+                <%= task.status %><br>
+                <label>Description: </label>
+                <p><%= task.taskDescription %></p>         
+                
+                <% if (task.taskNotes&& task.taskNotes.length!=0) { %>
+                <label>Notes: </label>
+                <p><%= task.taskNotes %></p>
+                <% } %>
+                
+                        <div class="row">
+                            <div class="col-md-6">
+                                <section class="addnotes-form">
+                                    <h3>Add Notes</h3>
+                                    <form class="form-horizontal" method="POST" action="/api/todo/<%=task.id%>/notes">
+                                        <div class="form-group">
+                                            <label for="notes" class="control-label col-sm-3">Notes</label>
+                                            <div class="col-sm-9">
+                                                <textarea placeholder="Add notes here..." id="taskNotes" class="form-control" name="taskNotes"></textarea>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-default" type="submit">Submit</button>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                       
+
+                            <section class="task-form">
+                                <%  
+                    locals.taskToUpdate = task;
+                 %>
+                                    <%- include ../partials/task-form %>
+                            </section>
+    </div>
+
+    <% 	include ../partials/scripts %>
+</body>
+
+</html>

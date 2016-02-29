@@ -8,10 +8,24 @@
 <body>
     <div class="container">
         <header>
+            <h1><%= pageTitle %></h1>
         </header>
         <main>
-            <h2><%= pageTitle %></h2>
-            <!-- Let's start writing content! -->        
+            <h2><%= type %></h2>
+            <hr/>    
+            <ul>
+                <% task.forEach(function(task) { %>
+                    <li><a href="/api/todo/<%=task.id%>"><%= task.taskTitle%></a></li>                
+                <% }) %>
+            </ul>
+            
+            <a href="/api/todo/open">Open</a> - 
+            <a href="/api/todo/completed">Completed</a> - 
+            <a href="/api/todo">All</a>    
+            
+            <section>
+                <% include ../partials/task-form %>
+            </section>
         </main>
     </div>
 
